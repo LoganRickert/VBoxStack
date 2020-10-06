@@ -12,6 +12,7 @@ from vbox import *
 v = VirtualBox("ubuntu18-01")
 v.create()
 v.set_cpus(8)
+v.set_ioapic(True)
 v.set_memory("8192")
 v.set_ostype("Ubuntu_64")
 v.create_sata_controller()
