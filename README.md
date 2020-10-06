@@ -4,6 +4,28 @@ This repo is a REST API for vbox. It also has a handy vbox script to allow a use
 
 Currently only works on Linux. Assumes VBoxManage.
 
+## Examples
+
+```
+from vbox import *
+
+v = VirtualBox("ubuntu18-01")
+v.create()
+v.set_cpus(8)
+v.set_memory("8192")
+v.set_ostype("Ubuntu_64")
+v.create_sata_controller()
+v.set_nic()
+v.set_bridge_adapter(adapter="enp0s25")
+v.set_mac_address()
+v.create_hd("/home/logan/VBoxStack/ubuntu18-01", "40000")
+v.attach_storage("SATA Controller", 0, "hdd", "/home/logan/VBoxStack/ubuntu18-01.vdi")
+v.attach_storage("SATA Controller", 1, "dvddrive", "/home/logan/VBoxStack/ubuntu-18.04.5-live-server-amd64.iso")
+v.set_boot()
+v.set_vrde(True, 7000)
+v.start_headless()
+```
+
 ## Python
 
 If you are only wanting to use vbox.py, you don't need to install anything.
