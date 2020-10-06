@@ -66,6 +66,11 @@ class VirtualBox:
             "--memory", str(memory)
         ])
 
+    def set_ioapic(self, on):
+        return self._run_modifyvm([
+            "--ioapic", "on" if on else "off"
+        ])
+
     def set_description(self, description):
         return self._run_modifyvm([
             "--description", str(description)
